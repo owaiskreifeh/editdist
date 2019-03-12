@@ -7,6 +7,10 @@ require_once(realpath("./classes/Levenshtein.php"));
 
 final class MethodsTest extends TestCase
 {
+    /**
+     * @Test
+     * Tests if Levenshtein implementaion matches the PHP native one
+     */
     public function testLevenshteinReturnsEqualValueAsThePHPNativeImplementation(): void{
         $this->assertEquals(
         Levenshtein::run("this is good", "that is good") 
@@ -14,6 +18,10 @@ final class MethodsTest extends TestCase
         );
     }
 
+    /**
+     * @Test
+     * Test if Hamming Implementation returns 2
+     */
     public function testHammingReturns2(): void{
         $this->assertEquals(Hamming::run("this is good", "that is good") , 2);
     }

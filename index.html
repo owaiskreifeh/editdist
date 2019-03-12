@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Distance</title>
+    <style>
+        header{
+            font-size: 2em;
+            font-family: 'Courier New', Courier, monospace;
+            color: #558;
+            text-align: center;
+        }
+
+        .input-controller{
+            width: 95vw;
+            font-size: 1.1em;
+        }
+        #btn-submit{
+            display: block;
+            width: 50vw;
+            margin: 0px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>Levenshtein edit distance</header>
+    <main>
+        <section id="form">
+            <input type="text" class="input-controller" id="string1">
+            <input type="text" class="input-controller" id="string2">
+            <button id="btn-submit">Calculate</button>
+        </section>
+        <section id="result">
+
+        </section>
+        <section id="readme">
+
+        </section>
+    </main>
+
+
+    <script type="module">
+        var $ = document.querySelector.bind(document);
+        $("#btn-submit").onclick = () => {
+            var string1 = $("#string1").value;
+            var string2 = $("#string2").value;
+
+            var url = '/router.php';
+            var formData = new FormData();
+            formData.append("string1", string1);
+            formData.append("string2", string2);
+
+
+            fetch(url, {
+                    method: 'POST', // or 'PUT'
+                    body: formData
+                }).then(res => res.json())
+                .then(response => {
+                    if(response.errors){
+                        response.errors.forEach(e=> $("#result").innerHTML += e + "<br>");
+                        return;
+                    }
+                    $("#result").innerHTML = response.data;
+                })
+                .catch(error => console.log(error));
+        };
+    </script>
+</body>
+
+</html>

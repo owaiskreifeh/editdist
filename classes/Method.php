@@ -1,6 +1,6 @@
 <?php
 
-class Method{
+abstract class Method{
     protected $a, $b, $m, $n, $count;
     public function Method(string $a, string $b){
         $this->a = $a;
@@ -9,4 +9,5 @@ class Method{
         $this->n = strlen($b) -1;
 
     }
+    abstract static function run(string $str1, string $str2);
 }

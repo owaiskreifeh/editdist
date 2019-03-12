@@ -18,8 +18,8 @@ extends Method
         $b = $this->b;
         $m = $this->m +1;
         $n = $this->n +1;
-        if ($m === 0) return $n;
-        if ($n === 0) return $m;
+        if ($m <= 0) return $n;
+        if ($n <= 0) return $m;
     
         $count = abs($m - $n);
     

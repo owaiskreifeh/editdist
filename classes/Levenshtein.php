@@ -16,8 +16,8 @@ extends Method
         $a = $this->a;
         $b = $this->b;
         
-        if ($m === 0) return $n;
-        if ($n === 0) return $m;
+        if ($m <= 0) return $n;
+        if ($n <= 0) return $m;
     
         if ($a[$m] === $b[$n]) return $this->calculate($m-1, $n-1);
         return min(

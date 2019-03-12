@@ -11,9 +11,9 @@ extends Method
         
     }
 
-    public function getCount(){ return $this->count; }
+    public function getCount():int { return $this->count; }
 
-    private function calculate(){
+    private function calculate(): int{
         $a = $this->a;
         $b = $this->b;
         $m = $this->m +1;
@@ -30,5 +30,9 @@ extends Method
                     $a[$i] = $b[$i];
                 }
         return $count;
+    }
+    public static function run(string $str1, string $str2): int{
+        $hamming = new Hamming($str1, $str2);
+        return $hamming->getCount();
     }
 }
